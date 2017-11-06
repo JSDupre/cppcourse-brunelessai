@@ -53,6 +53,10 @@ class Network{
        */
       std::vector<int> getSpikesVectorForNeuroneAtIndix(unsigned int const& indix)const;
       
+	  /** \brief write the spiking time of the first numberOfNeuronsToRecord (in Constants.hpp) neurons (we suppose they represent the activity of the whole network)
+	   * 
+	   * @param fileName the name of the file we want to write on (will be created if not existing)
+	   */
       void writeSpikesDataFile(std::string const& fileName) const;
  };
 

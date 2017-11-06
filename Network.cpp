@@ -13,9 +13,9 @@ using namespace std;
       	double const& exitatoryConnectionProbability,double const& inhibitoryConnectionProbability,int const& clock)
 	:clock_(clock){
 		//assert the probability are in the correct range
-			assert(exitatoryProportion>=0.0 and exitatoryProportion<=1);
-			assert(exitatoryConnectionProbability>=0.0 and exitatoryConnectionProbability<=1);
-			assert(inhibitoryConnectionProbability>=0.0 and inhibitoryConnectionProbability<=1);
+			assert(exitatoryProportion>=0.0 and exitatoryProportion<=1.0);
+			assert(exitatoryConnectionProbability>=0.0 and exitatoryConnectionProbability<=1.0);
+			assert(inhibitoryConnectionProbability>=0.0 and inhibitoryConnectionProbability<=1.0);
 		
 			//creating our neurones
 			int numberOfExitatoryNeurones(numberOfNeurones*exitatoryProportion);
@@ -74,6 +74,7 @@ using namespace std;
      	int TotalNumberOfTimeIncrement(Tstop/TimeIncrement);
      	cout<<"simulation running ... "<<endl;
      	int OnePercent(0.01*TotalNumberOfTimeIncrement);
+     	//simulation loop
      	while (clock_<TotalNumberOfTimeIncrement){
 			if(clock_%OnePercent==0){
 				cout<<(double)clock_*100/(double)TotalNumberOfTimeIncrement<<"%"<<flush;
@@ -84,8 +85,6 @@ using namespace std;
 				if(spike){
 					for(auto& indixNeuroneConnected:n->getConnections()){
 						neurones_[indixNeuroneConnected]->receive((clock_+D),n->getJsentToPostSynapticNeurone());
-						//network.getNeurones()[connection.getPostIndix()]->receive((clock+D),connection.getJ());
-
 					}
 				}
 			}

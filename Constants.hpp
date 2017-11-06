@@ -15,6 +15,7 @@
 	const double D(1.5); //!< the delay between the reception of a spike and its integration in the calculus of the membrane potential(in ms)
 	const double Je(0.1); //!< the potential of an arriving spike, the same for each exitatory connection for simplification
 	const double Eta(2); //!< Nuext/NuThr, see Brunel's paper for more detailed information
+	const double Iexterieur(0.0); //!< external current input from the outside of the brain
 	
 	//for graph procuction
 	const int numberOfNeuronsToRecord(100);
@@ -24,7 +25,6 @@
 	const int RefractoryTimeInTimeIncrement(RefractoryTime/TimeIncrement);
 	const int DelayInTimeIncrement(D/TimeIncrement);
 	const double Ji(g*Je); //see Model
-	const double Iexterieur(0.8); // test 
 	const double NuExt((Eta*SpikeThreshold)/(Je*Tau)); //spikes*ms^-1, see Brunel paper
 	const double NuExtTimeH (NuExt*TimeIncrement);
 	const double R1(exp(-TimeIncrement/Tau));
